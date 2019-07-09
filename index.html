@@ -15,11 +15,14 @@
 <script>
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
+    var ballSize = 9;
     var x = canvas.width/2;
     var y = canvas.height-30;
+    var dx = 1;
+    var dy = -1;
 
     function ballz() {
-        ctx.arc(x,y,10,0,Math.PI*2);
+        ctx.arc(x,y,ballSize,0,Math.PI*2);
         ctx.fillStyle = "#00F5DD";
         ctx.fill();
         ctx.closePath();
@@ -29,9 +32,20 @@
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ctx.beginPath();
         ballz();
-        x += 1;
-        y -= 1;
+        x += dx;
+        y += dy;
+        checkBallz();
     }
+
+    function checkBallz(){
+        if(y + dy < ballSize || y + dy > canvas.height-ballSize){
+            dy = -dy;
+        }
+        if(x + dx < ballSize || x + dx > canvas.width-ballSize) {
+            dx = -dx;
+        }
+    }
+
     setInterval(move, 10);
     //ctx.beginPath();
     //ctx.rect(20, 40, 50, 50);
