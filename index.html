@@ -4,13 +4,13 @@
     <meta charset="utf-8" />
     <title>Pure, Vanilla-Flavoured JavaScript</title>
     <style>
-    	* { padding: 0; margin: 0; }
-    	canvas { background: #eee; display: block; margin: 0 auto; }
+    	* { padding: 1; margin: 1; }
+    	canvas { background: #000; display: block; margin: 0 auto; }
     </style>
 </head>
 <body>
 
-<canvas id="myCanvas" width="480" height="320"></canvas>
+<canvas id="myCanvas" width="800" height="600"></canvas>
 
 <script>
     var canvas = document.getElementById("myCanvas");
@@ -25,6 +25,7 @@
     var paddleX = (canvas.width-paddleWidth)/2;
     var rightPressed = false;
     var leftPressed = false;
+    var interval = setInterval(move, 10);
 
     function ballz() {
         ctx.beginPath();
@@ -58,10 +59,14 @@
     }
 
     function checkBallz(){
-        if(y + dy < ballSize || y + dy > canvas.height-ballSize){
+        if(y + dy < ballSize){
             dy = -dy;
+        } else if(y + dy > canvas.height-ballSize) {
+            alert("THOU ART DEAD");
+            document.location.reload();
+            clearInterval(interval);
         }
-        if(x + dx < ballSize || x + dx > canvas.width-ballSize) {
+        else if(x + dx < ballSize || x + dx > canvas.width-ballSize) {
             dx = -dx;
         }
     }
