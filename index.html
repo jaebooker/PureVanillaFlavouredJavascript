@@ -18,17 +18,21 @@
     var x = canvas.width/2;
     var y = canvas.height-30;
 
-    function draw(){
-        ctx.clearRect(0, 0, canvas.width, canvas.height);
-        ctx.beginPath();
+    function ballz() {
         ctx.arc(x,y,10,0,Math.PI*2);
         ctx.fillStyle = "#00F5DD";
         ctx.fill();
         ctx.closePath();
+    }
+
+    function move(){
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        ctx.beginPath();
+        ballz();
         x += 1;
         y -= 1;
     }
-    setInterval(draw, 10);
+    setInterval(move, 10);
     //ctx.beginPath();
     //ctx.rect(20, 40, 50, 50);
     //ctx.fillStyle = "#FFF000";
