@@ -45,10 +45,10 @@
 
     function move(){
         if(rightPressed && paddleX < canvas.width - paddleWidth) {
-            paddleX += 7;
+            paddleX += 3;
         }
         else if(leftPressed && paddleX > 0) {
-            paddleX -= 7;
+            paddleX -= 3;
         }
         ctx.clearRect(0, 0, canvas.width, canvas.height);
         ballz();
@@ -62,9 +62,15 @@
         if(y + dy < ballSize){
             dy = -dy;
         } else if(y + dy > canvas.height-ballSize) {
-            alert("THOU ART DEAD");
-            document.location.reload();
-            clearInterval(interval);
+            if(x > paddleX && x < paddleX + paddleWidth) {
+                dy = -dy;
+            }
+            else {
+                alert("THOU ART DEAD");
+                document.location.reload();
+                clearInterval(interval);
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
         }
         else if(x + dx < ballSize || x + dx > canvas.width-ballSize) {
             dx = -dx;
