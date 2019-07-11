@@ -42,7 +42,7 @@
     function scoreBoard(){
         ctx.font = "20px Arial";
         ctx.fillStyle = "#00FF99";
-        ctx.fillText("Score " +score, 8, 20);
+        ctx.fillText("Score " +score, 15, 30);
     }
 
     function nineLives() {
@@ -100,15 +100,15 @@
         else if(leftPressed && paddleX > 0) {
             paddleX -= 3;
         }
-        scoreBoard();
-        nineLives();
         ctx.clearRect(0, 0, canvas.width, canvas.height);
-        realBricks();
         collisionDetection();
         ballz();
         paddle();
         x += dx;
         y += dy;
+        scoreBoard();
+        nineLives();
+        realBricks();
         checkBallz();
     }
 
