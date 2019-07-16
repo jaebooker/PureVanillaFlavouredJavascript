@@ -13,31 +13,31 @@
 <canvas id="myCanvas" width="800" height="600"></canvas>
 
 <script>
-    var canvas = document.getElementById("myCanvas");
-    var ctx = canvas.getContext("2d");
-    var intervalCount = 10;
-    var ballSize = 9;
-    var paddleHeight = 11;
-    var paddleWidth = 85;
-    var x = canvas.width/2;
-    var y = canvas.height-30;
-    var dx = 1;
-    var dy = -1;
-    var paddleX = (canvas.width-paddleWidth)/2;
-    var rightPressed = false;
-    var leftPressed = false;
+    const canvas = document.getElementById("myCanvas");
+    const ctx = canvas.getContext("2d");
+    let intervalCount = 10;
+    const ballSize = 9;
+    const paddleHeight = 11;
+    const paddleWidth = 85;
+    let x = canvas.width/2;
+    let y = canvas.height-30;
+    let dx = 1;
+    let dy = -1;
+    let paddleX = (canvas.width-paddleWidth)/2;
+    let rightPressed = false;
+    let leftPressed = false;
 
-    var bricks = [];
-    var brickRowCount = 10;
-    var brickColumnCount = 9;
-    var brickWidth = 75;
-    var brickHeight = 20;
-    var brickPadding = 11;
-    var brickOffsetTop = 35;
-    var brickOffsetLeft = 30;
+    let bricks = [];
+    const brickRowCount = 10;
+    const brickColumnCount = 9;
+    const brickWidth = 75;
+    const brickHeight = 20;
+    const brickPadding = 11;
+    const brickOffsetTop = 35;
+    const brickOffsetLeft = 30;
 
-    var score = 0;
-    var lives = 9;
+    let score = 0;
+    let lives = 9;
 
     function scoreBoard(){
         ctx.font = "20px Arial";
@@ -143,7 +143,6 @@
                     ctx.clearRect(0, 0, canvas.width, canvas.height);
                     changeInterval();
                 } else {
-                    console.log('Oops **************')
                     x = canvas.width/2;
                     y = canvas.height-30;
                     dx = 1;
