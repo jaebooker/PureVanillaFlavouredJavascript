@@ -13,6 +13,66 @@
 <canvas id="myCanvas" width="800" height="600"></canvas>
 
 <script>
+    class xBall {
+        constructor(radius, color = "#0095DD"){
+            this.radius = radius;
+            this.color = color;
+        }
+        render(ctx){
+            ctx.beginPath();
+            ctx.arc(x,y,this.radius,0,Math.PI*2);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+    class xPaddle {
+        constructor(height, width, paddlex, color = "#0099FF"){
+            this.height = height;
+            this.width = width;
+            this.paddlex = paddlex
+            this.color = color;
+        }
+        render(ctx){
+            ctx.beginPath();
+            ctx.rect(this.paddleX, canvas.height-this.height, this.width, this.height);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
+    class xScoreBoard {
+        constructor(height, width, font = "20px Arial", color = "#00FF99"){
+            this.height = height;
+            this.width = width;
+            this.font = font;
+            this.color = color;
+            this.score = 0
+        }
+        render(ctx){
+            //ctx.beginPath();
+            ctx.font = this.font;
+            ctx.fillStyle = this.color;
+            ctx.fillText("Score " + this.score, this.height, this.width);
+            //ctx.closePath();
+        }
+    }
+    class xBrick {
+        constructor(height, width, brickx, bircky, color = "#0095DD"){
+            this.height = height;
+            this.width = width;
+            this.color = color;
+            this.brickx = brickx;
+            this.bricky = bricky;
+        }
+        render(ctx){
+            ctx.beginPath();
+            ctx.rect(this.brickX, this.brickY, this.width, this.height);
+            ctx.fillStyle = this.color;
+            ctx.fill();
+            ctx.closePath();
+        }
+    }
     const canvas = document.getElementById("myCanvas");
     const ctx = canvas.getContext("2d");
     let intervalCount = 10;
